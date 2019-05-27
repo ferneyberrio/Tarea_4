@@ -6,8 +6,9 @@ int num1, num2, multiplos = 0, veces, operando = 0, decimal = 0, pos_decimal = 0
 int numero;
 int ingreso;
 float pos_num[2]={0,0};
+int validacion[2]={0,0};
 int alterna = 0;
-int p=0;
+int p=0,q=0;
 float resultado = 0;
 int veces_alterna =0;
 
@@ -30,7 +31,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::principal(){
 
- if(ingreso==11||ingreso==12||ingreso==13||ingreso==14||ingreso==15||ingreso==16||ingreso==17||ingreso==18){
+    q = !q;
+    validacion[q]= ingreso;
+
+ if(ingreso>10 && ingreso <18 && ( (validacion[0]<=10 && validacion[1]>=11)||(validacion[1]<=10 && validacion[0]>=11)) ){
 
    if (veces_alterna == 1){
 
@@ -56,9 +60,11 @@ void MainWindow::principal(){
         veces = 0 ;
         multiplos = 0;
         decimal=0;
+
     }
-     ui-> etiqueta2 ->setText(Resultado);
-      ui-> etiqueta1 ->setText(QString::number(pos_num[0]));
+     //ui-> etiqueta2 ->setText(Resultado);
+     // ui-> etiqueta1 ->setText(QString::number(pos_num[0]));
+      ui->LCD_calc->display(pos_num[0]);
        }
 }
 
@@ -76,8 +82,8 @@ void MainWindow::on_numero1_clicked()
            pos_num[p] = num1;}
          if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
-         // cout << "el numero va en " << pos_num[p] << endl;
+           ui->LCD_calc->display(pos_num[p]);
+
 
 }
 
@@ -92,7 +98,8 @@ void MainWindow::on_numero2_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         // ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+           ui->LCD_calc->display(pos_num[p]);
 
 }
 
@@ -106,7 +113,8 @@ void MainWindow::on_numero3_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         // ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+           ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero4_clicked()
@@ -119,7 +127,8 @@ void MainWindow::on_numero4_clicked()
            pos_num[p] = num1;}
          if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         // ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+           ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero5_clicked()
@@ -132,7 +141,7 @@ void MainWindow::on_numero5_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+            ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero6_clicked()
@@ -145,7 +154,8 @@ void MainWindow::on_numero6_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+            //ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+           ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero7_clicked()
@@ -158,7 +168,8 @@ void MainWindow::on_numero7_clicked()
            pos_num[p] = num1;}
          if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+          //ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+           ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero8_clicked()
@@ -171,7 +182,8 @@ void MainWindow::on_numero8_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+          //ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+          ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero9_clicked()
@@ -184,7 +196,8 @@ void MainWindow::on_numero9_clicked()
            pos_num[p] = num1;}
          if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         // ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         ui->LCD_calc->display(pos_num[p]);
 }
 
 void MainWindow::on_numero_cero_clicked()
@@ -197,7 +210,8 @@ void MainWindow::on_numero_cero_clicked()
            pos_num[p] = num1;}
           if(decimal == 1) {
             pos_num[p] = (num1/ pow(10, (veces-1))); }
-          ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         // ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+          ui->LCD_calc->display(pos_num[p]);
 
 }
 
@@ -205,6 +219,9 @@ void MainWindow::on_numero_decimal_clicked()
 {
 
        ingreso = 10;
+       if(validacion[0]||validacion[1] >10){
+           decimal = 0;
+           veces =0;}
             if(decimal == 0){ veces = 0;}
            decimal++ ;
            veces++;
@@ -216,7 +233,7 @@ void MainWindow::on_T_dividir_clicked()
 {
 
     ingreso = 14;
-    principal();
+     principal();
      operando = 14;
 
 
@@ -227,7 +244,7 @@ void MainWindow::on_T_dividir_clicked()
 void MainWindow::on_T_multip_clicked()
 {
     ingreso = 13;
-    principal();
+     principal();
      operando = 13;
 
 
@@ -238,7 +255,7 @@ void MainWindow::on_T_resta_clicked()
 {
 
     ingreso = 12;
-    principal();
+     principal();
     operando = 12;
 
 
@@ -249,7 +266,7 @@ void MainWindow::on_T_suma_clicked()
 {
 
     ingreso = 11;
-      principal();
+     principal();
      operando = 11;
 
 
@@ -272,8 +289,11 @@ void MainWindow::on_T_reinicia_clicked()
               veces_alterna=0;
               ingreso=0;
               operando=0;
+              validacion[0]=0;
+               validacion[1]=0;
 
-               ui-> etiqueta1 ->setText(QString::number(pos_num[0]));
+              // ui-> etiqueta1 ->setText(QString::number(pos_num[0]));
+               ui->LCD_calc->display(pos_num[0]);
              // cout << "el numero va en " << pos_num[0] << endl;
                principal();
 }
@@ -283,7 +303,8 @@ void MainWindow::on_T_borrar_clicked()
    ingreso = 17;
 
    pos_num[p] = 0 ;
-         ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         //ui-> etiqueta1 ->setText(QString::number(pos_num[p]));
+         ui->LCD_calc->display(pos_num[p]);
            //  cout << "el numero va en " << pos_num[p] << endl;
            principal();
 }
@@ -291,8 +312,10 @@ void MainWindow::on_T_borrar_clicked()
 void MainWindow::on_T_igual_clicked()
 {
  ingreso = 15;
+  //pos_num[0] = operar_resultado( operando, pos_num[0],  pos_num[1]);
 if (veces_alterna == 0){pos_num[0] =  operar_resultado( operando, pos_num[0],  pos_num[1]);}
-  principal();
+ else{ principal();}
+ui->LCD_calc->display(pos_num[0]);
 }
 
 //funciones
